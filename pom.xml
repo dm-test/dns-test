@@ -20,6 +20,10 @@
         <webdrivermanager.version>3.4.0</webdrivermanager.version>
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
         <htmlelements-java.version>1.20.0</htmlelements-java.version>
+        <aspectj.version>1.8.10</aspectj.version>
+        <allure-junit5.version>2.10.0</allure-junit5.version>
+        <allure-maven.version>2.9</allure-maven.version>
+        <allure-generator.version>2.7.0</allure-generator.version>
         <jupiter.parallel>false</jupiter.parallel>
         <jupiter.parallel.threads>3</jupiter.parallel.threads>
     </properties>
@@ -61,7 +65,12 @@
             <artifactId>htmlelements-java</artifactId>
             <version>${htmlelements-java.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>${allure-junit5.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -89,32 +98,26 @@
                             junit.jupiter.execution.parallel.config.fixed.parallelism = ${jupiter.parallel.threads}
                         </configurationParameters>
                     </properties>
-                    <!--                    <systemProperties>-->
-                    <!--                        <property>-->
-                    <!--                            <name>allure.results.directory</name>-->
-                    <!--                            <value>${project.build.directory}/allure-results</value>-->
-                    <!--                        </property>-->
-                    <!--                    </systemProperties>-->
-                    <!--                    <argLine>-->
-                    <!--                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar-->
-                    <!--                    </argLine>-->
+                    <argLine>
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+                    </argLine>
                 </configuration>
-                <!--                <dependencies>-->
-                <!--                    <dependency>-->
-                <!--                        <groupId>org.aspectj</groupId>-->
-                <!--                        <artifactId>aspectjweaver</artifactId>-->
-                <!--                        <version>${aspectj.version}</version>-->
-                <!--                    </dependency>-->
-                <!--                </dependencies>-->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
-            <!--            <plugin>-->
-            <!--                <groupId>io.qameta.allure</groupId>-->
-            <!--                <artifactId>allure-maven</artifactId>-->
-            <!--                <version>${allure-maven.version}</version>-->
-            <!--                <configuration>-->
-            <!--                    <reportVersion>${allure-generator.version}</reportVersion>-->
-            <!--                </configuration>-->
-            <!--            </plugin>-->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+                <configuration>
+                    <reportVersion>${allure-generator.version}</reportVersion>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
