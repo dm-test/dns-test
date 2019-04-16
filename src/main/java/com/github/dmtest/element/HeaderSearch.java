@@ -1,15 +1,10 @@
 package com.github.dmtest.element;
 
-import com.github.dmtest.support.driver.DriverSupport;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import ru.yandex.qatools.htmlelements.element.Button;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 import ru.yandex.qatools.htmlelements.element.TypifiedElement;
-import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
-import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementLocatorFactory;
 
 public class HeaderSearch extends TypifiedElement {
 
@@ -30,8 +25,6 @@ public class HeaderSearch extends TypifiedElement {
 
     public HeaderSearch(WebElement wrappedElement) {
         super(wrappedElement);
-        WebDriver driver = DriverSupport.getDriver();
-        PageFactory.initElements(new HtmlElementDecorator(new HtmlElementLocatorFactory(driver)), this);
     }
 
     public TextInput getSearchInput() {
