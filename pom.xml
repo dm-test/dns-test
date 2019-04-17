@@ -24,7 +24,7 @@
         <allure-testng.version>2.10.0</allure-testng.version>
         <allure-maven.version>2.9</allure-maven.version>
         <allure-generator.version>2.7.0</allure-generator.version>
-        <parallel.threads.count>4</parallel.threads.count>
+        <threads.count>4</threads.count>
         <tags>@all</tags>
     </properties>
 
@@ -71,7 +71,7 @@
                     <properties>
                         <property>
                             <name>dataproviderthreadcount</name>
-                            <value>${parallel.threads.count}</value>
+                            <value>${threads.count}</value>
                         </property>
                     </properties>
                     <forkCount>1</forkCount>

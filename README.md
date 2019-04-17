@@ -1,13 +1,18 @@
 # Проект UI автотестов сайта DNS
 
-**Запуск тестов в многопоточном режиме:**
+**Запуск всех тестов в многопоточном режиме:**
 ```
-mvn clean test -Dtest=JunitTests -Djupiter.parallel=true
+mvn clean test
 ```
 
-**Запуск тестов в однопоточном режиме:**
+**Запуск конкретных тестов по тегу в многопоточном режиме:**
 ```
-mvn clean test -Dtest=JunitTests
+mvn clean test -Dtags=@1
+```
+
+**Запуск конкретных тестов по тегу в однопоточном режиме:**
+```
+mvn clean test -Dthreads.count=1 -Dtags=@1
 ```
 
 **Формирование Allure-отчета**
