@@ -4,11 +4,11 @@ import com.github.dmtest.page.ChooseCityPage;
 import com.github.dmtest.page.ItemPage;
 import com.github.dmtest.page.MainPage;
 import com.github.dmtest.support.driver.DriverSupport;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
 
-public class JunitTests {
+public class TestNgTests {
 
     @Test
     public void test1() {
@@ -40,7 +40,7 @@ public class JunitTests {
         itemPage.buyItem();
     }
 
-    @AfterEach
+    @AfterTest
     public void tearDown() {
         DriverSupport.getDriver().quit();
     }
