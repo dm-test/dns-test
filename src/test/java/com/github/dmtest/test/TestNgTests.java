@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class TestNgTests {
 
-    @Test
+//    @Test
     public void test1() {
         WebDriver driver = DriverSupport.getDriver();
         driver.get("https://www.dns-shop.ru");
@@ -25,7 +25,7 @@ public class TestNgTests {
         itemPage.buyItem();
     }
 
-    @Test
+//    @Test
     public void test2() {
         WebDriver driver = DriverSupport.getDriver();
         driver.get("https://www.dns-shop.ru");
@@ -40,7 +40,7 @@ public class TestNgTests {
         itemPage.buyItem();
     }
 
-    @AfterTest
+//    @AfterTest
     public void tearDown() {
         DriverSupport.getDriver().quit();
     }
