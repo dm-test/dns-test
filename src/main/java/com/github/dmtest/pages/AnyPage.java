@@ -1,15 +1,19 @@
-package com.github.dmtest.page;
+package com.github.dmtest.pages;
 
-import com.github.dmtest.element.HeaderSearch;
-import com.github.dmtest.element.HeaderTop;
+import com.github.dmtest.elements.HeaderSearch;
+import com.github.dmtest.elements.HeaderTop;
 import com.github.dmtest.support.driver.DriverSupport;
-import com.github.dmtest.support.page.CustomHtmlElementDecorator;
+import com.github.dmtest.support.element.CustomHtmlElementDecorator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import ru.yandex.qatools.htmlelements.annotations.Name;
+import ru.yandex.qatools.htmlelements.element.Named;
 import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementLocatorFactory;
 
-public abstract class AnyPage {
+import java.util.Optional;
+
+public abstract class AnyPage implements Named {
 
     @FindBy(xpath = "//div[@class='header-top']")
     private HeaderTop headerTop;
@@ -20,6 +24,13 @@ public abstract class AnyPage {
     AnyPage() {
         WebDriver driver = DriverSupport.getDriver();
         PageFactory.initElements(new CustomHtmlElementDecorator(new HtmlElementLocatorFactory(driver)), this);
+    }
+
+    @Override
+    public String getName() {
+        return Optional.ofNullable(this.getClass().getAnnotation(Name.class))
+                .map(Name::value)
+                .orElse(this.getClass().getSimpleName());
     }
 
     public HeaderSearch getHeaderSearch() {

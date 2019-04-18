@@ -1,4 +1,4 @@
-package com.github.dmtest.support.page;
+package com.github.dmtest.support.element;
 
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;

@@ -1,11 +1,13 @@
-package com.github.dmtest.page;
+package com.github.dmtest.pages;
 
 import com.github.dmtest.support.driver.DriverSupport;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 
+@Name("Выбор города")
 public class ChooseCityPage extends AnyPage {
 
     @FindBy(xpath = "//div[@class='select-lists state-city-select']//input[@data-role='search-city']")

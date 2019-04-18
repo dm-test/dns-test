@@ -1,11 +1,13 @@
-package com.github.dmtest.page;
+package com.github.dmtest.pages;
 
 import com.github.dmtest.support.driver.DriverSupport;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.element.Button;
 
+@Name("Карточка товара")
 public class ItemPage extends AnyPage {
 
     @FindBy(xpath = "//button[starts-with(@class,'btn btn-cart')]")

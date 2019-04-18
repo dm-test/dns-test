@@ -1,12 +1,10 @@
 package com.github.dmtest.test;
 
-import com.github.dmtest.page.ChooseCityPage;
-import com.github.dmtest.page.ItemPage;
-import com.github.dmtest.page.MainPage;
+import com.github.dmtest.pages.ChooseCityPage;
+import com.github.dmtest.pages.ItemPage;
+import com.github.dmtest.pages.MainPage;
 import com.github.dmtest.support.driver.DriverSupport;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.Test;
 
 public class TestNgTests {
 
