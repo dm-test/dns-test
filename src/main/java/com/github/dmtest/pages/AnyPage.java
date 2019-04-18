@@ -4,14 +4,12 @@ import com.github.dmtest.elements.HeaderSearch;
 import com.github.dmtest.elements.HeaderTop;
 import com.github.dmtest.support.driver.DriverSupport;
 import com.github.dmtest.support.element.CustomHtmlElementDecorator;
+import com.github.dmtest.support.page.PageSupport;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.element.Named;
 import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementLocatorFactory;
-
-import java.util.Optional;
 
 public abstract class AnyPage implements Named {
 
@@ -28,9 +26,7 @@ public abstract class AnyPage implements Named {
 
     @Override
     public String getName() {
-        return Optional.ofNullable(this.getClass().getAnnotation(Name.class))
-                .map(Name::value)
-                .orElse(this.getClass().getSimpleName());
+        return PageSupport.getAnnotationNameValue(this.getClass());
     }
 
     public HeaderSearch getHeaderSearch() {
