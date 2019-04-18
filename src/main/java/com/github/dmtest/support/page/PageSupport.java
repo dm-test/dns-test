@@ -23,7 +23,7 @@ public class PageSupport {
     }
 
     @SuppressWarnings("unchecked")
-    private static <T extends AnyPage> T getPageByName(String name) {
+    public static <T extends AnyPage> T getNewPageByName(String name) {
         Class<? extends AnyPage> clazz = getPageClassByName(name);
         try {
             Constructor<? extends AnyPage> constructor = clazz.getConstructor();
@@ -69,7 +69,7 @@ public class PageSupport {
                 allClasses.add(info.load());
             }
         } catch (IOException e) {
-            LOG.warn("Failed to read class path resources", e);
+            LOG.error("Failed to read class path resources", e);
             throw new IOError(e);
         }
         return allClasses;
