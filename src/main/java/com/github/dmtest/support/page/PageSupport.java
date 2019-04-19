@@ -1,6 +1,7 @@
 package com.github.dmtest.support.page;
 
 import com.github.dmtest.pages.AnyPage;
+import com.github.dmtest.support.common.CommonSupport;
 import com.google.common.reflect.ClassPath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,30 +23,16 @@ public class PageSupport {
     private PageSupport() {
     }
 
-    @SuppressWarnings("unchecked")
     public static <T extends AnyPage> T getNewPageByName(String name) {
         Class<? extends AnyPage> clazz = getPageClassByName(name);
-        try {
-            Constructor<? extends AnyPage> constructor = clazz.getConstructor();
-            constructor.setAccessible(true);
-            return (T) (constructor.newInstance());
-        } catch (ReflectiveOperationException e) {
-            LOG.error("Failed to instantiate page class with name '{}'", name);
-            throw new RuntimeException(e);
-        }
+        return CommonSupport.getInstance(clazz);
     }
 
     private static Class<? extends AnyPage> getPageClassByName(String name) {
         return getPageClasses().stream()
-                .filter(clazz -> getAnnotationNameValue(clazz).equals(name))
+                .filter(clazz -> CommonSupport.getAnnotationNameValue(clazz).equals(name))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(String.format("No classes with '@Name value()' is '%s'", name)));
-    }
-
-    public static String getAnnotationNameValue(Class<?> clazz) {
-        return Optional.ofNullable(clazz.getAnnotation(Name.class))
-                .map(Name::value)
-                .orElse("");
     }
 
     @SuppressWarnings("unchecked")
